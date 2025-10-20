@@ -45,62 +45,6 @@
             pointer-events: none;
         }
 
-        .upload-section {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            display: flex;
-            gap: 10px;
-            flex-direction: column;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .upload-section.hidden {
-            opacity: 0;
-            transform: translateX(-200px);
-            pointer-events: none;
-        }
-
-        .upload-btn {
-            background: rgba(255, 255, 255, 0.95);
-            color: #ff1493;
-            border: 2px solid #ff69b4;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9em;
-            font-weight: bold;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .upload-btn:hover {
-            background: #ff1493;
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .fade-out {
-            animation: fadeOut 0.5s forwards;
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                transform: translateX(-200px);
-            }
-        }
-
-        #fileInput, #bgFileInput {
-            display: none;
-        }
-
         .container {
             text-align: center;
             z-index: 10;
@@ -312,17 +256,6 @@
             }
         }
 
-        .placeholder-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #999;
-            font-size: 1.2em;
-            text-align: center;
-            pointer-events: none;
-        }
-
         .petal {
             position: absolute;
             width: 20px;
@@ -347,17 +280,9 @@
     </style>
 </head>
 <body>
-    <img id="bgImage" alt="Background flowers" style="display: none;">
+    <!-- Thay đổi đường dẫn này thành ảnh nền hoa của bạn -->
+    <img id="bgImage" src="hoa.PNG" alt="Background flowers">
     
-    <div class="upload-section">
-        <button class="upload-btn" id="bgBtn" onclick="document.getElementById('bgFileInput').click()">
-            🌹 Chọn ảnh nền hoa
-        </button>
-        <button class="upload-btn" id="photoBtn" onclick="document.getElementById('fileInput').click()">
-            📷 Chọn ảnh chính
-        </button>
-    </div>
-
     <div class="container">
         <h1>Happy Women's Day 20/10</h1>
         <h2>& Happy Birthday to You! 🎉</h2>
@@ -369,85 +294,20 @@
         </div>
 
         <div class="instax-frame">
-            <div style="position: relative; width: 350px; height: 400px; background: #f0f0f0;">
-                <img id="photoImg" style="display: none;" alt="Birthday Girl">
-                <div class="placeholder-text" id="placeholder">
-                    Click "Chọn ảnh chính" 📸
-                </div>
-            </div>
+            <!-- Thay đổi đường dẫn này thành ảnh cô gái của bạn -->
+            <img id="photoImg" src="girl.PNG" alt="Birthday Girl">
             <div class="instax-caption">bbixo_04 ♡</div>
         </div>
 
-        <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <button class="music-btn" onclick="toggleMusic()">
             🎵
         </button>
     </div>
 
-    <input type="file" id="fileInput" accept="image/*">
-    <input type="file" id="bgFileInput" accept="image/*">
-
     <script>
-        let bgImageLoaded = false;
-        let mainImageLoaded = false;
-        const uploadSection = document.querySelector('.upload-section');
-
-        function checkAndHideButtons() {
-            if (bgImageLoaded && mainImageLoaded) {
-                uploadSection.classList.add('hidden');
-            }
-        }
-
         function toggleMusic() {
             window.open('https://youtu.be/q4Y9OZp9TlU', '_blank');
         }
-
-        // Handle background image upload
-        const bgFileInput = document.getElementById('bgFileInput');
-        const bgImage = document.getElementById('bgImage');
-        const bgBtn = document.getElementById('bgBtn');
-
-        bgFileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    bgImage.src = event.target.result;
-                    bgImage.style.display = 'block';
-                    bgBtn.textContent = '✓ Đã chọn ảnh nền';
-                    bgBtn.style.background = '#4ade80';
-                    bgBtn.style.color = 'white';
-                    bgBtn.style.borderColor = '#4ade80';
-                    bgImageLoaded = true;
-                    checkAndHideButtons();
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Handle main image upload
-        const fileInput = document.getElementById('fileInput');
-        const photoImg = document.getElementById('photoImg');
-        const placeholder = document.getElementById('placeholder');
-        const photoBtn = document.getElementById('photoBtn');
-
-        fileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    photoImg.src = event.target.result;
-                    photoImg.style.display = 'block';
-                    placeholder.style.display = 'none';
-                    photoBtn.textContent = '✓ Đã chọn ảnh';
-                    photoBtn.style.background = '#4ade80';
-                    photoBtn.style.color = 'white';
-                    photoBtn.style.borderColor = '#4ade80';
-                    mainImageLoaded = true;
-                    checkAndHideButtons();
-                };
-                reader.readAsDataURL(file);
-            }
-        });
 
         // Create falling flowers
         const flowerEmojis = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐', '🏵️', '🥀'];
