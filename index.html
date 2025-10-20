@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Women's Day 20/10 & Birthday</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+            background: #ffc0cb;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        #bgImage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            filter: blur(2px) brightness(0.95);
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,192,203,0.2) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .upload-section {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .upload-section.hidden {
+            opacity: 0;
+            transform: translateX(-200px);
+            pointer-events: none;
+        }
+
+        .upload-btn {
+            background: rgba(255, 255, 255, 0.95);
+            color: #ff1493;
+            border: 2px solid #ff69b4;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .upload-btn:hover {
+            background: #ff1493;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateX(-200px);
+            }
+        }
+
+        #fileInput, #bgFileInput {
+            display: none;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #ff1493;
+            text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.8),
+                         -1px -1px 3px rgba(255, 105, 180, 0.6);
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7),
+                         -1px -1px 2px rgba(255, 20, 147, 0.5);
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        .name-title {
+            font-size: 2.8em;
+            color: #ff1493;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        .message {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            line-height: 1.8;
+            font-size: 1.1em;
+            color: #333;
+            font-family: 'Georgia', serif;
+        }
+
+        .music-btn {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 2em;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.4);
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            text-decoration: none;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.6);
+        }
+
+        .music-btn:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.8),
+                             -1px -1px 3px rgba(255, 105, 180, 0.6);
+            }
+            50% {
+                text-shadow: 3px 3px 20px rgba(255, 255, 255, 1),
+                             -1px -1px 10px rgba(255, 20, 147, 0.9);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .instax-frame {
+            background: white;
+            padding: 20px 20px 60px 20px;
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            transform: rotate(-2deg);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            transition: transform 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .instax-frame:hover {
+            transform: rotate(0deg) scale(1.08);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: rotate(-2deg) translateY(0);
+            }
+            50% {
+                transform: rotate(-2deg) translateY(-15px);
+            }
+        }
+
+        .instax-frame img {
+            width: 350px;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .instax-caption {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            font-family: 'Georgia', serif;
+            color: #666;
+            font-size: 1.3em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 2.5em;
+            animation: fall linear infinite;
+            opacity: 0.9;
+            z-index: 5;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #ffeb3b;
+            border-radius: 50%;
+            animation: sparkle 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px #ffeb3b;
+            z-index: 5;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff1493;
+            font-size: 2em;
+            animation: heartbeat 1.2s ease-in-out infinite;
+            z-index: 5;
+            filter: drop-shadow(0 0 5px rgba(255, 20, 147, 0.8));
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.3);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        .placeholder-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #999;
+            font-size: 1.2em;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(ellipse at center, #ffb6d9 0%, #ff69b4 100%);
+            border-radius: 50% 0 50% 0;
+            animation: petalFall linear infinite;
+            opacity: 0.7;
+            z-index: 5;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img id="bgImage" alt="Background flowers" style="display: none;">
+    
+    <div class="upload-section">
+        <button class="upload-btn" id="bgBtn" onclick="document.getElementById('bgFileInput').click()">
+            🌹 Chọn ảnh nền hoa
+        </button>
+        <button class="upload-btn" id="photoBtn" onclick="document.getElementById('fileInput').click()">
+            📷 Chọn ảnh chính
+        </button>
+    </div>
+
+    <div class="container">
+        <h1>Happy Women's Day 20/10</h1>
+        <h2>& Happy Birthday to You! 🎉</h2>
+        
+        <div class="message">
+            <p><em>Wishing you a wonderful 20/10 and a lovely birthday!<br>
+            May today bring you endless joy, love, and warm memories.<br>
+            You deserve every bit of happiness this world can offer. 🎂🌸</em></p>
+        </div>
+
+        <div class="instax-frame">
+            <div style="position: relative; width: 350px; height: 400px; background: #f0f0f0;">
+                <img id="photoImg" style="display: none;" alt="Birthday Girl">
+                <div class="placeholder-text" id="placeholder">
+                    Click "Chọn ảnh chính" 📸
+                </div>
+            </div>
+            <div class="instax-caption">bbixo_04 ♡</div>
+        </div>
+
+        <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+            🎵
+        </button>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*">
+    <input type="file" id="bgFileInput" accept="image/*">
+
+    <script>
+        let bgImageLoaded = false;
+        let mainImageLoaded = false;
+        const uploadSection = document.querySelector('.upload-section');
+
+        function checkAndHideButtons() {
+            if (bgImageLoaded && mainImageLoaded) {
+                uploadSection.classList.add('hidden');
+            }
+        }
+
+        function toggleMusic() {
+            window.open('https://youtu.be/q4Y9OZp9TlU', '_blank');
+        }
+
+        // Handle background image upload
+        const bgFileInput = document.getElementById('bgFileInput');
+        const bgImage = document.getElementById('bgImage');
+        const bgBtn = document.getElementById('bgBtn');
+
+        bgFileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    bgImage.src = event.target.result;
+                    bgImage.style.display = 'block';
+                    bgBtn.textContent = '✓ Đã chọn ảnh nền';
+                    bgBtn.style.background = '#4ade80';
+                    bgBtn.style.color = 'white';
+                    bgBtn.style.borderColor = '#4ade80';
+                    bgImageLoaded = true;
+                    checkAndHideButtons();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle main image upload
+        const fileInput = document.getElementById('fileInput');
+        const photoImg = document.getElementById('photoImg');
+        const placeholder = document.getElementById('placeholder');
+        const photoBtn = document.getElementById('photoBtn');
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    photoImg.src = event.target.result;
+                    photoImg.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    photoBtn.textContent = '✓ Đã chọn ảnh';
+                    photoBtn.style.background = '#4ade80';
+                    photoBtn.style.color = 'white';
+                    photoBtn.style.borderColor = '#4ade80';
+                    mainImageLoaded = true;
+                    checkAndHideButtons();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Create falling flowers
+        const flowerEmojis = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐', '🏵️', '🥀'];
+        
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            flower.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 10000);
+        }
+
+        setInterval(createFlower, 250);
+
+        // Create petals
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            petal.style.animationDelay = Math.random() * 1 + 's';
+            document.body.appendChild(petal);
+
+            setTimeout(() => {
+                petal.remove();
+            }, 9000);
+        }
+
+        setInterval(createPetal, 400);
+
+        // Create sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDelay = Math.random() * 1 + 's';
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1500);
+        }
+
+        setInterval(createSparkle, 150);
+
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '💕';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+
+        setInterval(createHeart, 400);
+
+        // Initial batch
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createFlower, i * 150);
+            setTimeout(createPetal, i * 200);
+        }
+    </script>
+</body>
+</html>
