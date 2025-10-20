@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Women's Day 20/10 & Birthday</title>
     <style>
         * {
             margin: 0;
@@ -40,91 +40,37 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 192, 203, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,192,203,0.2) 100%);
             z-index: 1;
             pointer-events: none;
         }
 
         .container {
             text-align: center;
-            z-index: 9999;
-            /* Thay đổi từ 10 thành 9999 */
+            z-index: 10;
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-top: 10%;
         }
 
         h1 {
             font-size: 3.5em;
-            margin-bottom: 10px;
-            font-weight: bold;
-            font-family: 'Georgia', serif;
-            position: relative;
-            z-index: 9999;
-            /* Thay đổi từ 1000 thành 9999 */
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .word {
-            display: inline-block;
             color: #ff1493;
             text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.8),
-                -1px -1px 3px rgba(255, 105, 180, 0.6),
-                0 0 20px rgba(255, 20, 147, 0.4);
-            animation: wordFloat 3s ease-in-out infinite;
-        }
-
-        .word:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .word:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .word:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        .word:nth-child(4) {
-            animation-delay: 0.6s;
-        }
-
-        .word.highlight {
-            color: #ff0080;
-            font-size: 1.2em;
-            text-shadow: 3px 3px 8px rgba(255, 255, 255, 1),
-                -1px -1px 5px rgba(255, 0, 128, 0.8),
-                0 0 30px rgba(255, 0, 128, 0.6);
-        }
-
-        @keyframes wordFloat {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            25% {
-                transform: translateY(-10px) rotate(-2deg);
-            }
-
-            75% {
-                transform: translateY(-5px) rotate(2deg);
-            }
+                         -1px -1px 3px rgba(255, 105, 180, 0.6);
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
         }
 
         h2 {
             font-size: 2.5em;
             color: #ff69b4;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7),
-                -1px -1px 2px rgba(255, 20, 147, 0.5);
+                         -1px -1px 2px rgba(255, 20, 147, 0.5);
             margin-bottom: 20px;
             animation: pulse 2s ease-in-out infinite;
             font-weight: bold;
@@ -184,26 +130,20 @@
         }
 
         @keyframes glow {
-
-            0%,
-            100% {
+            0%, 100% {
                 text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.8),
-                    -1px -1px 3px rgba(255, 105, 180, 0.6);
+                             -1px -1px 3px rgba(255, 105, 180, 0.6);
             }
-
             50% {
                 text-shadow: 3px 3px 20px rgba(255, 255, 255, 1),
-                    -1px -1px 10px rgba(255, 20, 147, 0.9);
+                             -1px -1px 10px rgba(255, 20, 147, 0.9);
             }
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
             }
-
             50% {
                 transform: scale(1.05);
             }
@@ -227,12 +167,9 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: rotate(-2deg) translateY(0);
             }
-
             50% {
                 transform: rotate(-2deg) translateY(-15px);
             }
@@ -270,7 +207,6 @@
                 transform: translateY(-100px) rotate(0deg);
                 opacity: 1;
             }
-
             100% {
                 transform: translateY(100vh) rotate(360deg);
                 opacity: 0.3;
@@ -289,13 +225,10 @@
         }
 
         @keyframes sparkle {
-
-            0%,
-            100% {
+            0%, 100% {
                 opacity: 0;
                 transform: scale(0);
             }
-
             50% {
                 opacity: 1;
                 transform: scale(1.5);
@@ -312,16 +245,12 @@
         }
 
         @keyframes heartbeat {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
             }
-
             25% {
                 transform: scale(1.3);
             }
-
             50% {
                 transform: scale(1);
             }
@@ -343,7 +272,6 @@
                 transform: translateY(-100px) rotate(0deg);
                 opacity: 1;
             }
-
             100% {
                 transform: translateY(100vh) rotate(720deg);
                 opacity: 0;
@@ -351,28 +279,24 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Thay đổi đường dẫn này thành ảnh nền hoa của bạn -->
-    <img id="bgImage" src="hoa.jpg" alt="Background flowers">
-
+    <img id="bgImage" src="hoa.PNG" alt="Background flowers">
+    
     <div class="container">
-        <h1>
-            <span class="word">Happy</span>
-            <span class="word">Women's</span>
-            <span class="word">Day</span>
-            <span class="word highlight">20/10</span>
-        </h1>
+        <h1>Happy Women's Day 20/10</h1>
+        <h2>& Happy Birthday to You! 🎉</h2>
+        
         <div class="message">
-            <p><em>Wishing you a wonderful 20/10<br>
-                    May today bring you endless joy, love, and warm memories.<br>
-                    You deserve every bit of happiness this world can offer. 🎂🌸</em></p>
+            <p><em>Wishing you a wonderful 20/10 and a lovely birthday!<br>
+            May today bring you endless joy, love, and warm memories.<br>
+            You deserve every bit of happiness this world can offer. 🎂🌸</em></p>
         </div>
 
         <div class="instax-frame">
             <!-- Thay đổi đường dẫn này thành ảnh cô gái của bạn -->
-            <img id="photoImg" src="girl.jpg" alt="Birthday Girl">
-            <div class="instax-caption">Alice Yoo ♡</div>
+            <img id="photoImg" src="girl.PNG" alt="Birthday Girl">
+            <div class="instax-caption">bbixo_04 ♡</div>
         </div>
 
         <button class="music-btn" onclick="toggleMusic()">
@@ -382,12 +306,12 @@
 
     <script>
         function toggleMusic() {
-            window.open('https://youtu.be/https://www.youtube.com/watch?v=tGv7CUutzqU&list=RDtGv7CUutzqU&start_radio=1', '_blank');
+            window.open('https://youtu.be/q4Y9OZp9TlU', '_blank');
         }
 
         // Create falling flowers
         const flowerEmojis = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐', '🏵️', '🥀'];
-
+        
         function createFlower() {
             const flower = document.createElement('div');
             flower.className = 'flower';
@@ -459,5 +383,4 @@
         }
     </script>
 </body>
-
 </html>
